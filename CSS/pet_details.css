@@ -1,0 +1,193 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url('Other_images/waggytales_bg.png');
+}
+
+html{
+    scroll-behavior: smooth;
+}
+    
+    
+header {
+    display: flex;
+    position: relative;
+    top: 0;
+    z-index: 1000;
+    background-color: #c67e50;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+#logo-container {
+    display: flex;
+    align-items: center;
+}
+
+#logo-container img {
+    height: 120px;
+    width: 300px;
+    margin-left: 20px;
+}
+
+.head_nav {
+    display: flex;
+    margin: 0;
+    width: 100%;
+    justify-content: right; 
+
+}
+
+.head_nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.head_nav ul li {
+    margin-right: 20px;
+}
+
+
+.head_link {
+    font: 24px Impact, sans-serif;
+    color: beige;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.head_link:hover {
+color: rgb(51, 10, 10);
+text-decoration: underline;
+}
+
+.sticky-header {
+position: sticky;
+top: 0;
+background-color: #a05834;
+padding: 10px 20px; 
+justify-content: center; 
+}
+
+.sticky-header #logo-container {
+display: none;
+}
+
+.sticky-header nav {
+justify-content: center; 
+}
+
+
+#petDetailsContainer{
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    margin: 20px;
+}
+
+#petDetailsContainer img{
+    width: 400px;
+    border-radius: 5px;
+    border: #c67e50 4px solid;
+}
+
+h2{
+    font-size: 40px;
+    padding: 12px;
+    color: #64341b;
+    display: inline-flex;
+    gap: 10px;
+}
+
+button{
+    position: relative;
+    top: -10px;
+    margin-left: 65px;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: solid 2px #a05834;
+    border-radius: 5px;
+    background-color: rgba(198, 126, 80);
+    color: #47210e;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover{
+    transform: scale(1.05);
+    background-color: rgb(198, 126, 80);
+    color: beige;
+}
+
+.desc2{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 24px;
+    margin-left: 20px;
+}
+
+.desc2 strong{
+    color: #713e25;
+}
+
+footer{
+    background-color: #290f02;
+    color: bisque;
+    padding: 12px 100px 12px 100px;
+  }
+  
+  .footer_container{
+    display: flex;
+    gap: 5px;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .footer_sec{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 300px;
+  
+  }
+  
+  .footer_sec img{
+    height: 30px;
+  }
+  
+  .fcon{
+    display: flex;
+    font-size: 12px;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .navlinks ul{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    padding-left: 10px;
+  
+  }
+  
+  .navlinks a{
+    color: bisque;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  .navlinks a:hover{
+    text-decoration: underline 2px bisque;
+    padding: 10px;
+    transition:  0.2s ease;
+  }
+  

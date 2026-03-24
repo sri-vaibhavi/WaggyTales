@@ -1,0 +1,187 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign In</title>
+        <link rel="stylesheet" href="login.css">
+        <link rel="icon" href="/Other_images/WaggyTales_Logo.png">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="message-box" class="hidden">
+            <p id="message-text"></p>
+            <button onclick="closeMessage()">OK</button>
+        </div>
+        <div class="container">
+            <div class="card">
+                <div class="form-container sign-in">
+                    <form id="signin-form" action="/signin" method="POST">
+                        <h1>Please Sign In to proceed!</h1>
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <input type="hidden" id="signin-redirect" name="redirect">
+
+                        <button>Sign In <i class="fa-solid fa-paw"></i></button>
+                    </form>
+                    <div class="toggle-container">
+                        <p>New here?</p>
+                        <button id="flipToSignUp">Sign Up</button>
+                    </div>
+                </div>
+
+                <div class="form-container sign-up">
+                    <form id="signup-form" action="/signup" method="POST">
+                        <h1>Please Sign Up to proceed!</h1>
+                        <input type="text" name="username" id="signup-username" placeholder="Username" required>
+                        <input type="email" name="email" id="signup-email" placeholder="Email" required>
+                        <input type="tel" name="phone" id="signup-phone" placeholder="Phone Number" required>
+                        <input type="password" name="password" id="signup-password" placeholder="Password" required>
+                        <input type="hidden" id="signup-redirect" name="redirect">
+
+                        <br>
+                        <button class="otpgen">Generate OTP<i class="fa-solid fa-paw"></i></button>
+                    </form>
+                    <div class="toggle-container">
+                            <form id="otp-form">
+                                <input type="hidden" name="email" id="otp-email">
+                                <input type="hidden" name="username" id="otp-username">
+                                <input type="hidden" name="phone" id="otp-phone">
+                                <input type="hidden" name="password" id="otp-password">
+                                <input type="hidden" name="redirect" id="redirectInput"> 
+                                <input class="otptext" type="text" name="otp" placeholder="Enter OTP" required>
+                                <button type="submit">Verify OTP</button>
+                            </form>
+                            <p>Already have an account?</p>
+                            <button id="flipToSignIn">Sign In</button>
+                            <div id="otp-section" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const container = document.querySelector(".container");
+                container.classList.add("flip");
+            
+                const flipToSignUp = document.querySelector("#flipToSignUp");
+                const flipToSignIn = document.querySelector("#flipToSignIn");
+            
+                flipToSignUp.addEventListener("click", () => container.classList.add("flip"));
+                flipToSignIn.addEventListener("click", () => container.classList.remove("flip"));
+            
+                const signupForm = document.getElementById("signup-form");
+                const signinForm = document.getElementById("signin-form");
+                const otpForm = document.getElementById("otp-form");
+            
+                function showMessage(message) {
+                    const messageBox = document.getElementById("message-box");
+                    const messageText = document.getElementById("message-text");
+                    messageText.innerText = message;
+                    messageBox.style.display = "block";
+                }
+            
+                function closeMessage() {
+                    document.getElementById("message-box").style.display = "none";
+                }
+            
+                // Capture redirect parameter (e.g., donate form)
+                const params = new URLSearchParams(window.location.search);
+                const redirectPage = params.get("redirect");  // e.g., "donate"
+            
+                signupForm.addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    const formData = new FormData(this);
+            
+                    fetch('/signup', {
+                        method: 'POST',
+                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                        body: new URLSearchParams(formData)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showMessage("OTP sent to your email. Please verify.");
+                            document.getElementById("otp-section").style.display = "block";
+            
+                            document.getElementById("otp-email").value = document.getElementById("signup-email").value;
+                            document.getElementById("otp-username").value = document.getElementById("signup-username").value;
+                            document.getElementById("otp-phone").value = document.getElementById("signup-phone").value;
+                            document.getElementById("otp-password").value = document.getElementById("signup-password").value;
+                        } else {
+                            showMessage(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showMessage("An unexpected error occurred.");
+                    });
+                });
+            
+                otpForm.addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    const formData = new FormData(this);
+            
+                    fetch('/verify-otp', {
+                        method: 'POST',
+                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                        body: new URLSearchParams(formData)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showMessage("OTP verified successfully! Redirecting...");
+                            setTimeout(() => {
+                                if (redirectPage === "donate") {
+                                    window.location.href = "/donate";  // Redirect back to the donate form
+                                } else {
+                                    window.location.href = "/success";  // Default redirection
+                                }
+                            }, 1500);
+                        } else {
+                            showMessage("Invalid OTP. Please try again.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showMessage("An unexpected error occurred.");
+                    });
+                });
+            
+                signinForm.addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    const formData = new FormData(this);
+            
+                    fetch('/signin', {
+                        method: 'POST',
+                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                        body: new URLSearchParams(formData)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showMessage("Sign-in successful! Redirecting...");
+                            setTimeout(() => {
+                                if (redirectPage === "donate") {
+                                    window.location.href = "/donate";
+                                } else {
+                                    window.location.href = "/success";
+                                }
+                            }, 1500);
+                        } else {
+                            showMessage(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showMessage("An unexpected error occurred.");
+                    });
+                });
+            
+                window.closeMessage = closeMessage;
+            });
+            </script>
+            
+    </body>
+</html>

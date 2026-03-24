@@ -1,0 +1,150 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WaggyTales - Find your perfect companion</title>
+        <link rel="icon" href="/Other_images/WaggyTales_Logo.png" type="image/x-icon"/>
+        <link rel="stylesheet" href="adoptlist.css">
+    </head>
+    <body>
+        <header id="header">
+            <div id="logo-container">
+                <img src="/Other_images/WaggyTales_Logo_and_title.png" alt="Waggy Tales Logo">
+            </div>
+            <nav class="head_nav">
+                <ul>
+                    <li><a class="head_link" href="/">Home</a></li>
+                    <li><a class="head_link" href="/about-us">About Us</a></li>
+                    <li><a class="head_link" href="/adopt">Adopt Now</a></li>
+                    <li><a class="head_link" href="/donate">Rehome</a></li>
+                    <li><a class="head_link" href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <form id="filterForm">
+                <label for="pet_type">Pet Type:</label>
+                <select id="pet_type" name="pet_type">
+                    <option value="">All</option>
+                    <option value="DOG">Dog</option>
+                    <option value="CAT">Cat</option>
+                </select>
+            
+                <label for="location">Location:</label>
+                <select id="location" name="location">
+                    <option value="">All</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                </select>
+            
+                <button type="submit">Filter</button>
+            </form>
+            
+            <div id="petList"></div> <!-- Pet list will be displayed here -->
+            <footer id="contact">
+                <div class="footer_container">
+                    <div class="flogo">
+                        <img src="Footer icons/footer_logo.png" style="width: 300px; height: fit-content; margin-bottom: 20px;" alt="">
+                        <p style="text-align: center; font-size: 19px;">&copy; 2024 WaggyTales. All Rights Reserved.</p>
+        
+                    </div>
+                    <div class="footer_sec">        
+                        <h2 style="text-align: center; font-size: 24px; text-decoration: underline; margin-bottom: 10px;">Contact Us</h2>
+                        <div class="fcon">
+                            <img src="Footer icons/Call_icon.png" alt="">
+                            <h1> +91 912345 67890 </h1>
+                        </div>
+                        <div class="fcon">
+                            <img src="Footer icons/address_icon.png" alt="">
+                            <h1> No: 4/903 First Floor TNHB, Manali New Town, Chennai-600103</h1>
+                        </div>
+                        <div class="fcon">
+                            <img src="Footer icons/Insta_icon.png" alt="">
+                            <h1> @Waggy._.Tales </h1>
+                        </div>
+                        <div class="fcon">
+                            <img src="Footer icons/mail_icon.png" alt="">
+                            <h1> waggytales@gmail.com </h1>
+                        </div>
+                        
+                    </div>
+                    <nav class="navlinks">
+                        <h2 style="margin-bottom: 16px; font-size: 24px; text-decoration: underline;">Quick Links</h2>
+                        <ul>
+                            <li><a href="home.html">Home</a></li>
+                            <li><a href="about-us.html">About Us</a></li>
+                            <li><a href="#">Adopt Pet</a></li>
+                            <li><a href="#">Rehome Pet</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            <br>
+            <hr>
+            <br>
+            </footer>
+        </main>
+        <script>
+            
+            document.addEventListener("DOMContentLoaded", function () {
+                fetchPets(); // Fetch all pets when the page loads
+
+                // Add event listener to form
+                document.getElementById("filterForm").addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    fetchPets(); // Fetch pets based on filters when the button is clicked
+                });
+            });
+
+            function fetchPets() {
+    const petType = document.getElementById("pet_type").value;
+    const location = document.getElementById("location").value;
+
+    let query = `/pets?status=Available`; // Always include status=Available
+    if (petType) query += `&pet_type=${petType}`;
+    if (location) query += `&location=${location}`;
+
+    fetch(query)
+        .then(response => response.json())
+        .then(data => {
+            const adoptlistContainer = document.getElementById("petList");
+            adoptlistContainer.innerHTML = ""; // Clear previous results
+
+            if (!data || data.length === 0) {
+                adoptlistContainer.innerHTML = `<p>No pets found</p>`;
+                return;
+            }
+
+            data.forEach(pet => {
+                // Ensure pet_id is properly assigned
+                if (!pet.pet_id) {
+                    console.error("Missing pet_id for pet:", pet);
+                    return; // Skip rendering pets without an ID
+                }
+
+                const petCard = `
+                    <div class="acard">
+                        <img src="/Cat_images/${pet.imageUrl}" alt="${pet.pet_name}">
+                        <h1>${pet.pet_name}</h1>
+                        <div class="info">
+                            <p>Breed: ${pet.breed} <br>
+                            Age: ${pet.age} years</p>
+                            <p>Gender: ${pet.gender} <br>
+                            Trait: ${pet.trait}</p>
+                        </div>
+                        <a href="/details?pet_id=${pet.pet_id}" class="learn-more">Learn More</a>
+                    </div>
+                `;
+
+                console.log("Pet ID being assigned:", pet.pet_id);
+                adoptlistContainer.innerHTML += petCard;
+            });
+        })
+        .catch(error => console.error("Error fetching pets:", error));
+}
+
+        </script>
+    </body>
+    </html>

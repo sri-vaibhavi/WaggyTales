@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Details</title>
+    <link rel="icon" href="/Other_images/WaggyTales_Logo.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="pet_details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header id="header">
+        <div id="logo-container">
+            <img src="/Other_images/WaggyTales_Logo_and_title.png" alt="Waggy Tales Logo">
+        </div>
+        <nav class="head_nav">
+            <ul>
+                <li><a class="head_link" href="/">Home</a></li>
+                <li><a class="head_link" href="about.html">About Us</a></li>
+                <li><a class="head_link" href="/adopt">Adopt Now</a></li>
+                <li><a class="head_link" href="donate.html">Rehome</a></li>
+                <li><a class="head_link" href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="petDetailsContainer">
+        <p>Loading pet details...</p>
+    </main>
+
+    <footer id="contact">
+        <div class="footer_container">
+            <div class="flogo">
+                <img src="/Images/Footer icons/footer_logo.png" style="width: 300px; height: fit-content; margin-bottom: 20px;" alt="">
+                <p style="text-align: center; font-size: 19px;">&copy; 2024 WaggyTales. All Rights Reserved.</p>
+
+            </div>
+            <div class="footer_sec">        
+                <h2 style="text-align: center; font-size: 30px; text-decoration: underline; margin-bottom: 10px;">Contact Us</h2>
+                <div class="fcon">
+                    <img src="/Images/Footer icons/Call_icon_new-removebg-preview.png" alt="">
+                    <h1> +91 912345 67890 </h1>
+                </div>
+                <div class="fcon">
+                    <img src="/Images/Footer icons/address_icon_new-removebg-preview.png" alt="">
+                    <h1> No: 2, Dubai Kurukku Sandhu, Dubai Main Road, Dubai </h1>
+                </div>
+                <div class="fcon">
+                    <img src="/Images/Footer icons/Insta_icon_new-removebg-preview.png" alt="">
+                    <h1> @Waggy._.Tales </h1>
+                </div>
+                <div class="fcon">
+                    <img src="/Images/Footer icons/mail_icon_new-removebg-preview.png" alt="">
+                    <h1> waggytales@gmail.com </h1>
+                </div>
+                   
+            </div>
+            <nav class="navlinks">
+                <h2 style="margin-bottom: 16px; font-size: 30px; text-decoration: underline;">Quick Links</h2>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Adopt Pet</a></li>
+                    <li><a href="#">Donate Pet</a></li>
+                </ul>
+            </nav>
+        </div>
+    <br>
+    <hr>
+    <br>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const petId = urlParams.get("pet_id");
+
+    if (!petId || petId === "undefined" || petId === "null") {
+        document.getElementById("petDetailsContainer").innerHTML = "<p>Error: No pet ID provided.</p>";
+        return;
+    }
+
+    fetch(`http://localhost:5000/pets/${petId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(pet => {
+            document.getElementById("petDetailsContainer").innerHTML = `
+                <a href="/adopt"><i class="fa fa-chevron-circle-left" style="font-size:36px ; color: #c67e50"></i></a>
+                <div class="desc1">
+                    <img src="/Cat_images/${pet.imageUrl}" alt="${pet.pet_name}">
+                    <br>
+                    <h2>${pet.pet_name}</h2>
+                    <button id="adopt-btn">Adopt now</button>
+                </div>
+                <div class="desc2">
+                    <p><strong>Type:</strong> ${pet.pet_type}</p>
+                    <p><strong>Breed:</strong> ${pet.breed}</p>
+                    <p><strong>Age:</strong> ${pet.age} years</p>
+                    <p><strong>Gender:</strong> ${pet.gender}</p>
+                    <p><strong>Colour:</strong> ${pet.colour}</p>
+                    <p><strong>Trait:</strong> ${pet.trait}</p>
+                    <p><strong>Health Status:</strong> ${pet.health}</p>
+                    <p><strong>Diet:</strong> ${pet.diet}</p>
+                    <p><strong>Owner:</strong> ${pet.owner_name}</p>
+                    <p><strong>Location:</strong> ${pet.location}</p>
+                    <p><strong>Status:</strong> ${pet.status}</p>
+                    <p><strong>Reason for Adoption:</strong> ${pet.reason}</p>
+                </div>
+            `;
+
+            // ✅ Attach event listener AFTER content is loaded
+            document.getElementById("adopt-btn").addEventListener("click", function () {
+                window.location.href = `/login?redirect=/details?pet_id=${petId}`;
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching pet details:", error);
+            document.getElementById("petDetailsContainer").innerHTML = "<p>Failed to load pet details.</p>";
+        });
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <h2>Welcome, <span id="username"></span>!</h2>
+
+    <!-- Adoption Requests Section (For Adopters) -->
+    <h3>Your Adoption Requests</h3>
+    <p id="noAdoptedPets" style="display: none;">You haven't adopted any pets.</p>
+    <table id="adoptedTable" border="1" style="display: none;">
+        <tr>
+            <th>Pet Name</th>
+            <th>Status</th>
+        </tr>
+        <tbody id="adoptedPets"></tbody>
+    </table>
+
+    <!-- Donated Pets Section (For Pet Owners) -->
+    <h3>Your Listed Pets</h3>
+    <p id="noDonatedPets" style="display: none;">You haven't listed any pets.</p>
+    <table id="donatedTable" border="1" style="display: none;">
+        <tr>
+            <th>Pet Name</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        <tbody id="donatedPets"></tbody>
+    </table>
+
+    <a href="/logout">Logout</a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('/api/dashboard')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        window.location.href = "/login"; // Redirect if unauthorized
+                        return;
+                    }
+
+                    document.getElementById("username").textContent = data.user;
+
+                    // Adoption Requests Table (Adopted Pets)
+                    const adoptedPetsTable = document.getElementById("adoptedPets");
+                    const adoptedTable = document.getElementById("adoptedTable");
+                    const noAdoptedPetsMsg = document.getElementById("noAdoptedPets");
+
+                    if (data.adoptedPets.length > 0) {
+                        adoptedTable.style.display = "table"; // Show table only if there are pets
+                        data.adoptedPets.forEach(pet => {
+                            const row = document.createElement("tr");
+                            row.innerHTML = `
+                                <td>${pet.pet_name}</td>
+                                <td>${pet.status}</td>
+                            `;
+                            adoptedPetsTable.appendChild(row);
+                        });
+                    } else {
+                        noAdoptedPetsMsg.style.display = "block"; // Show message if no pets are adopted
+                    }
+
+                    // Donated Pets Table (For Owners)
+                    const donatedPetsTable = document.getElementById("donatedPets");
+                    const donatedTable = document.getElementById("donatedTable");
+                    const noDonatedPetsMsg = document.getElementById("noDonatedPets");
+
+                    if (data.donatedPets.length > 0) {
+                        donatedTable.style.display = "table"; // Show table only if there are pets
+                        data.donatedPets.forEach(pet => {
+                            const row = document.createElement("tr");
+                            row.innerHTML = `
+                                <td>${pet.pet_name}</td>
+                                <td>${pet.status}</td>
+                                <td>
+                                    ${pet.status !== 'Adopted' ? `<button onclick="markAsAdopted(${pet.pet_id})">Mark as Adopted</button>` : '✔'}
+                                </td>
+                            `;
+                            donatedPetsTable.appendChild(row);
+                        });
+                    } else {
+                        noDonatedPetsMsg.style.display = "block"; // Show message if no pets are listed
+                    }
+                })
+                .catch(err => console.error("Error fetching data:", err));
+        });
+
+        function markAsAdopted(petId) {
+            fetch(`/mark-adopted/${petId}`, { method: "POST" })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Pet marked as adopted!");
+                        location.reload();
+                    }
+                })
+                .catch(err => console.error("Error updating pet status:", err));
+        }
+    </script>
+</body>
+</html>

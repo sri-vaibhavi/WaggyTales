@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Donation Form</title>
+    <link rel="stylesheet" href="donate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header id="header">
+    <div id="logo-container">
+        <img src="/edited/WaggyTales_Logo_and_title_edited.png" alt="Waggy Tales logo"/>
+    </div>
+    <nav class="head_nav">
+        <ul>
+            <li><a class="head_link" href="/contact">Contact</a></li>
+                <li><a class="head_link" href="#">Adopt Now</a></li>
+                <li><a class="head_link" href="/donate">Rehome</a></li>
+                <li><a class="head_link" href="/about-us">About Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+        <h1 style="color: chocolate;">Pet Rehome Form</h1>
+        <p class="form-note"></p>
+        <form action="/donate" method="post" enctype="multipart/form-data">
+
+            <div class="form-wrapper">
+                <!-- Left Column -->
+                <div class="form-left">
+
+                    <label for="u_name">User Name:</label>
+                    <input type="text" id="u_name" name="u_name" required>
+
+                    <label for="pet_type">Type of Pet:</label>
+                    <select id="pet_type" name="pet_type" required>
+                        <option value="" disabled selected>Select Pet Type</option>
+                        <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                    </select>
+
+                    <label for="pet_name">Pet Name:</label>
+                    <input type="text" id="pet_name" name="pet_name" required>
+
+                    <label for="owner_name">Owner Name:</label>
+                    <input type="text" id="owner_name" name="owner_name" required>
+
+                    <label for="age">Pet Age:</label>
+                    <input type="number" id="age" name="age" required>
+
+                    <label for="gender"> Pet Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                    </select>
+                    <label for="State">State:</label>
+                    <select id="State" name="State" required>
+                        <option value="" disabled selected>Select your State</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Telangana">Telangana</option>
+                       
+                    </select>
+
+                </div>
+
+                <!-- Right Column -->
+                <div class="form-right disabled">
+                    <label for="colour">Pet Colour:</label>
+                    <input type="text" id="colour" name="colour" required>
+
+                    <label for="breed">Pet Breed:</label>
+                    <input type="text" id="breed" name="breed" required>
+
+                    <label for="trait">Pet Trait:</label>
+                    <select id="trait" name="trait" required>
+                        <option value="" disabled selected>Select Trait</option>
+                        <option value="friendly">Friendly</option>
+                        <option value="loyal">Loyal</option>
+                        <option value="playful">Playful</option>
+                        <option value="curious">Curious</option>
+
+                       
+                    </select>
+
+                    <label for="health">Health Conditions:</label>
+                    <select id="health" name="health" required>
+                        <option value="" disabled selected>Select Health Condition</option>
+                        <option value="VACCINATED">Vaccinated</option>
+                        <option value="NOT VACCINATED">Not Vaccinated</option>
+                    </select>
+
+                    <label for="diet">Pet Diet:</label>
+                    <textarea id="diet" name="diet" rows="3" required></textarea>
+
+                    <label for="reason">Reason for Donation:</label>
+                    <textarea id="reason" name="reason" rows="4" required></textarea>
+
+                    <label for="imageUrl">Upload Photo:</label>
+                    <input type="file" id="imageUrl" name="imageUrl" accept="image/*">
+                </div>
+            </div>
+            <button type="submit" id="submit-btn">
+                Submit
+            </button>
+        </form>
+
+   
+        <div class="popup-overlay" id="popup-overlay"></div>
+        <div class="popup-modal" id="popup-modal">
+          <div class="popup-content">
+            <h3>Wait for a new adopter to adopt your pet !!</h3>
+            <p>Soon new adopter will contact you</p>
+             
+            <button id="close-popup-btn">Close</button>
+          </div>
+        </div>
+        </div>
+</main>
+
+</footer>
+<footer id="contact">
+    <div class="footer_container">
+        <div class="flogo">
+            <img src="/edited/footer_logo.png" style="width: 300px; height: fit-content; margin-bottom: 20px;" alt="">
+            <p style="text-align: center; font-size: 19px;">&copy; 2025 WaggyTales. All Rights Reserved.</p>
+
+        </div>
+        <div class="footer_sec" style="color: bisque;">        
+            <h2 style="text-align: center; font-size: 30px; text-decoration: underline; margin-bottom: 10px;">Contact Us</h2>
+            <div class="fcon">
+                <img src="/edited/Call_icon_new-removebg-preview.png" alt="">
+                <h1> +91 912345 67890 </h1>
+            </div>
+            <div class="fcon">
+                <img src="/edited/address_icon_new-removebg-preview.png" alt="">
+                <h1> 4/903 Phase-1, First Floor TNHB
+                    Manali new town,   Chennai-600103.</h1>
+            </div>
+            <div class="fcon">
+                <img src="/edited/Insta_icon_new-removebg-preview.png" alt="">
+                <h1> @Waggy._.Tales </h1>
+            </div>
+            <div class="fcon">
+                <img src="/edited/mail_icon_new-removebg-preview.png" alt="">
+                <h1> waggytaless@gmail.com </h1>
+            </div>
+               
+        </div>
+        <nav class="navlinks">
+            <h2 style="margin-bottom: 16px; font-size: 30px; text-decoration: underline;">Quick Links</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="#adopt">Adopt Now</a></li>
+                <li><a href="/donate">Rehome</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                
+                
+               
+            </ul>
+        </nav>
+    </div>
+<br>
+<hr>
+<br>
+</footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const leftInputs = document.querySelectorAll(".form-left input, .form-left select");
+        const rightSection = document.querySelector(".form-right");
+        const rightInputs = document.querySelectorAll(".form-right input, .form-right select, .form-right textarea");
+        const submitBtn = document.getElementById("submit-btn");
+
+        function checkLeftFilled() {
+            for (let input of leftInputs) {
+                if (!input.value.trim()) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function enableRightSection() {
+            if (checkLeftFilled()) {
+                rightSection.classList.remove("disabled");
+                rightInputs.forEach(input => input.disabled = false);
+                submitBtn.disabled = false;
+            } else {
+                rightSection.classList.add("disabled");
+                rightInputs.forEach(input => input.disabled = true);
+                submitBtn.disabled = true;
+            }
+        }
+
+        leftInputs.forEach(input => input.addEventListener("input", enableRightSection));
+        enableRightSection();
+
+        // Handle form submission
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch("/donate", {
+                method: "POST",
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("popup-overlay").style.display = "block";
+                document.getElementById("popup-modal").style.display = "block";
+            })
+            .catch(error => console.error("Error:", error));
+        });
+
+        document.getElementById("close-popup-btn").addEventListener("click", function() {
+            document.getElementById("popup-overlay").style.display = "none";
+            document.getElementById("popup-modal").style.display = "none";
+        });
+    });
+</script>
+</body>
+</html>

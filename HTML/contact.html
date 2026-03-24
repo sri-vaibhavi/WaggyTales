@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="view port" content="width=device-width,initial-scale=1.0">
+    <title>Waggy Tales</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="icon" href="/edited/WaggyTales_Logo_edited.png">
+</head>
+<body>
+  <header id="header">
+        <div id="logo-container">
+          <img src="/edited/WaggyTales_Logo_and_title_edited.png" alt="Waggy Tales logo"/>
+        </div>
+        <nav class="head_nav">
+            <ul>
+                <li><a class="head_link" href="">Home</a></li>
+                <li><a class="head_link" href="/contact">Contact</a></li>
+                <li><a class="head_link" href="">Adopt Now</a></li>
+                <li><a class="head_link" href="/donate">Rehome</a></li>
+                <li><a class="head_link" href="/about-us">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="header">
+        </div>
+        <section class="contact-section">
+    <h1>CONTACT US</h1>
+    <p>Let us know how we can help you!</p>
+    <form id="contact-form" action="/contact" method="POST">
+        <h2>Contact Form</h2>
+  
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+  
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+  
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+  
+        <button type="submit" id="submit-btn">Submit</button>
+      </form>
+      <div class="popup-overlay" id="popup-overlay" style="display: none;"></div>
+      <div class="popup-modal" id="popup-modal" style="display: none;">
+          <div class="popup-content">
+              <h3>Thank you for contacting us!!</h3>
+              <p>We will try to solve your problem very soon.</p>
+              <button id="close-popup-btn">Close</button>
+          </div>
+      </div>
+      
+      
+</section>
+ <!-- Contact Details -->
+<!-- Office Information, Image, and Google Map Section -->
+<div style="display: flex; justify-content: space-between; align-items: center; background: #f8d6b4; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); max-width: 870px; margin: 90px auto; flex-wrap: wrap; margin-left:500px; ">
+    
+    <!-- Left Side: Office Details -->
+    <div style="flex: 1; min-width: 200px; padding-right: 10px; text-align: left; margin-left:80px;">
+        <h2>Visit Our Office 🏢</h2>
+        <h3>Working Hours ⏰</h3>
+        <p><strong>Mon - Sat:</strong> 9:00 AM - 6:00 PM</p>
+        <p><strong>Sunday:</strong> Closed 🚫</p>
+
+
+
+
+
+    </div>
+
+    <!-- Right Side: Office Image -->
+    <div style="flex: 1; min-width: 200px; text-align: center;">
+        <img src="/edited/images 30 - Copy.jfif" alt="Waggy Tales Office" style="width: 80%; max-width: 300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); margin-right:60px; margin-top:20px;">
+    </div>
+
+    <!-- Google Map (Full Width Below) -->
+    <div style="width: 100%; margin-top: 20px; text-align: center;">
+        <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.7083333333333!2d80.257685!3d13.188505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52f6fa4d8e7d3f%3A0x2f1c8bd0dbe8b8ff!2sPhase%20-%201%2C%204%2F903%2C%20First%20Floor%20TNHB%2C%20Sadayankuppam%2C%20Manali%2C%20Chennai%2C%20Tamil%20Nadu%20600103!5e0!3m2!1sen!2sin!4v1699600000000!5m2!1sen!2sin" 
+        width="90%" height="250" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+</div>
+
+    <!-- Google Map -->
+
+
+</section>
+</main>
+
+<footer id="contact">
+    <div class="footer_container">
+        <div class="flogo">
+            <img src="/edited/footer_logo.png" style="width: 300px; height: fit-content; margin-bottom: 20px;" alt="">
+            <p style="text-align: center; font-size: 19px;">&copy; 2025 WaggyTales. All Rights Reserved.</p>
+
+        </div>
+        <div class="footer_sec">        
+            <h2 style="text-align: center; font-size: 30px; text-decoration: underline; margin-bottom: 10px;">Contact Us</h2>
+            <div class="fcon">
+                <img src="/edited/Call_icon_new-removebg-preview.png" alt="">
+                <h1> +91 912345 67890 </h1>
+            </div>
+            <div class="fcon">
+                <img src="/edited/address_icon_new-removebg-preview.png" alt="">
+                <h1>4/903,Phase-1, First Floor TNHB
+                    Manali new town,
+                    Chennai-600103.</h1>
+            </div>
+            <div class="fcon">
+                <img src="/edited/Insta_icon_new-removebg-preview.png" alt="">
+                <h1> @Waggy._.Tales </h1>
+            </div>
+            <div class="fcon">
+                <img src="/edited/mail_icon_new-removebg-preview.png" alt="">
+                <h1> waggytaless@gmail.com </h1>
+            </div>
+               
+        </div>
+        <nav class="navlinks">
+            <h2 style="margin-bottom: 16px; font-size: 30px; text-decoration: underline;">Quick Links</h2>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="/about-us">About Us</a></li>
+                <li><a href="#adopt">Adopt Now</a></li>
+                <li><a href="/donate">Rehome</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+              
+                
+            </ul>
+        </nav>
+    </div>
+<br>
+<hr>
+<br>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() { 
+        document.getElementById("contact-form").addEventListener("submit", async function(event) {
+            event.preventDefault();  // Prevent default form submission
+    
+            // Collect form data
+            const formData = new FormData(this);
+            const jsonData = Object.fromEntries(formData.entries()); // Convert to JSON
+    
+            try {
+                const response = await fetch("/contact", { 
+
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"  // Ensure JSON format
+                    },
+                    body: JSON.stringify(jsonData)  // Convert form data to JSON
+                });
+    
+                if (!response.ok) {
+                    throw new Error("Failed to send message.");
+                }
+    
+                // Show the popup modal and overlay
+                document.getElementById("popup-overlay").style.display = "block";
+                document.getElementById("popup-modal").style.display = "block";
+
+                // Optionally hide the form
+                document.getElementById("contact-form").reset();
+
+                document.getElementById("contact-form").style.display = "none";
+
+    
+            } catch (error) {
+                alert("Error sending message: " + error.message);
+            }
+        });
+    
+        // Close button for popup
+        document.getElementById("close-popup-btn").addEventListener("click", function() {
+            document.getElementById("popup-overlay").style.display = "none";
+            document.getElementById("popup-modal").style.display = "none";
+        });
+    });
+    </script>
+    
+</body>
+</html>

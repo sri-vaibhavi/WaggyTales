@@ -1,0 +1,63 @@
+
+
+body {
+    text-align: center;
+    background-image: url(/Images/Other_images/waggytales_bg.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+
+}
+
+.msg {
+    background: rgba(237, 208, 170, 0.575);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    color:#744223;
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+}
+
+h3 {
+    font-size: 16px;
+    color: #777;
+}
+
+.pet-image {
+    width: 180px;
+    margin-top: 15px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    text-decoration: none;
+    background: #ff914d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background: #e67e22;
+}

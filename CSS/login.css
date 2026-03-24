@@ -1,0 +1,146 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/Other_images/waggytales_bg.png');
+    background-size: cover;
+}
+
+.container {
+    width: 768px;
+    height: 480px;
+    position: relative;
+    perspective: 1500px; /* Enables 3D effect */
+    margin-bottom: 40px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+}
+
+.container.flip .card {
+    transform: rotateY(180deg);
+}
+
+.form-container {
+    width: 100%;
+    height: max-content;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+    background: rgba(247, 236, 222, 0.575) ;
+    padding: 40px;
+    backface-visibility: hidden;
+}
+
+.sign-in {
+    text-align: center;
+    z-index: 2;
+}
+
+.sign-up {
+    text-align: center;
+    transform: rotateY(180deg);
+}
+
+.sign-in input{
+    width: 400px;
+}
+
+.sign-up input{
+    width: 400px;
+}
+
+#flipToSignUp{
+    width: 300px;;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #a5623e;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+p{
+    font-size: 22px;
+    color: #a5623e;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+input {
+    padding: 12px;
+    width: 80%;
+    border-radius: 12px;
+    border: 2px solid #c67e50;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 12px;
+    width: 300px;
+    border-radius: 15px;
+    font-size: 14px;
+    background-color: #c67e50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin: 8px;
+}
+
+button:hover {
+    background-color: #a5623e;
+}
+
+.toggle-container {
+    margin-top: 15px;
+}
+
+.toggle-container button {
+    background: none;
+    border: 2px solid #c67e50;
+    color: #c67e50;
+}
+
+.toggle-container button:hover {
+    background-color: #c67e50;
+    color: white;
+}
+
+#message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: none;
+    text-align: center;
+    z-index: 1000; /* Ensure it appears above everything */
+}
+#message-box button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}

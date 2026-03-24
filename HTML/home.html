@@ -1,0 +1,165 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaggyTales - Find your perfect companion</title>
+    <link rel="icon" href="/Other_images/WaggyTales_Logo.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="/homestyle.css">
+</head>
+<body>
+    <header id="header">
+        <div id="logo-container">
+            <img src="/Other_images/WaggyTales_Logo_and_title_edited.png" alt="Waggy Tales Logo">
+        </div>
+        <nav class="head_nav">
+            <ul>
+                <li><a class="head_link" href="#contact">Contact</a></li>
+                <li><a class="head_link" href="/adopt">Adopt Now</a></li>
+                <li><a class="head_link" href="/login?redirect=donate">Donate Now</a></li>
+                <li><a class="head_link" href="about.html">About Us</a></li>
+                <li><a class="head_link" href="/dashboardd">User</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="intro">
+        <h1>Every Tail deserves a tale and it begins here!</h1>
+        <h3>Thousands of pets are waiting for a home. Start your journey with <span style="color: #c67e50;">WaggyTales</span> and make a difference in their life and yours!</h3>
+        <center>
+            <a href="/adopt"><img class="intro_img" src="Other_images/Adopt_pet.png" alt="" height="300px"></a>
+            <a href="donate.html"><img class="intro_img"  src="Other_images/Donate_pet.png" alt="" height="300px"></a> 
+        </center>
+    </div>
+    <h1 style="text-align: center; font-size: 44px; font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #783e23;">Our Successful Tales!</h1>
+
+    <div class="container">
+        <div class="sliders">
+            <!-- Slide 1 -->
+            <div class="slide">
+            <img src="successful_stories_images/dog_1.jpg" alt="Max's Story">
+            <h1>Max's Tale</h1>
+            <p>Max, a scrappy terrier with soulful brown eyes, was found alone in a busy city park...</p>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide">
+            <img src="successful_stories_images/dog2.jpg" alt="Buddy's Story">
+            <h1>Buddy's Journey</h1>
+            <p>Buddy, a lively Labrador mix, had been returned to the shelter twice before meeting his match...</p>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide">
+            <img src="successful_stories_images/cat_1.jpg" alt="Bella's Story">
+            <h1>Bella's Journey</h1>
+            <p>Bella, a dainty tabby with a sweet purr, was abandoned in a storm but found her forever home...</p>
+            </div>
+            
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+
+    </div>
+    <h1 style="text-align: center; margin: 20px; font-size: 50px; color: #783e23; ">Why to adopt?</h1>
+    <div class="yadopt">
+        
+        <div class="yacon">
+            <h1>Save Lives</h1>
+            
+            <h3>By adopting, you provide a loving home to a pet in need and help reduce overcrowding in shelters.</h3>
+        </div>
+        <div class="yacon">
+            <h1>Support Ethics</h1>
+            <h3>Adoption discourages puppy mills and unethical breeding practices, promoting the humane treatment of animals.</h3>
+        </div>
+        <div class="yacon">
+            <img src="Other_images/adopt_clipart.png" width="auto" height="350px" alt="">
+        </div>
+        
+        <div class="yacon">
+            <h1>Gain Love</h1>
+            <h3>Adopted pets are incredibly loyal and grateful, bringing unconditional love and happiness into your life.</h3>
+        </div>
+        <div class="yacon">
+            <h1>Cost-Effective</h1>
+            <h3>Adoption is often more affordable than buying a pet, with shelters usually covering initial vaccinations and spaying/neutering.</h3>
+        </div>
+    </div>
+    <footer id="contact">
+        <div class="footer_container">
+            <div class="flogo">
+                <img src="Other_images/footer_logo.png" style="width: 300px; height: fit-content; margin-bottom: 20px;" alt="">
+                <p style="text-align: center; font-size: 19px;">&copy; 2024 WaggyTales. All Rights Reserved.</p>
+
+            </div>
+            <div class="footer_sec">        
+                <h2 style="text-align: center; font-size: 30px; text-decoration: underline; margin-bottom: 10px;">Contact Us</h2>
+                <div class="fcon">
+                    <img src="Footer icons/Call_icon_new-removebg-preview.png" alt="">
+                    <h1> +91 912345 67890 </h1>
+                </div>
+                <div class="fcon">
+                    <img src="Footer icons/address_icon_new-removebg-preview.png" alt="">
+                    <h1> No: 2, Dubai Kurukku Sandhu, Dubai Main Road, Dubai </h1>
+                </div>
+                <div class="fcon">
+                    <img src="Footer icons/Insta_icon_new-removebg-preview.png" alt="">
+                    <h1> @Waggy._.Tales </h1>
+                </div>
+                <div class="fcon">
+                    <img src="Footer icons/mail_icon_new-removebg-preview.png" alt="">
+                    <h1> waggytales@gmail.com </h1>
+                </div>
+                    
+            </div>
+            <nav class="navlinks">
+                <h2 style="margin-bottom: 16px; font-size: 30px; text-decoration: underline;">Quick Links</h2>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Adopt Pet</a></li>
+                    <li><a href="#">Donate Pet</a></li>
+                </ul>
+            </nav>
+        </div>
+    <br>
+    <hr>
+    <br>
+    </footer>
+    
+        
+    <script>
+        const sliders = document.querySelector('.sliders');
+        const slides = document.querySelectorAll('.slide');
+        const next = document.querySelector('.next');
+        const prev = document.querySelector('.prev');
+        let currentIndex = 0;
+
+        const updateCarousel = () => {
+        const offset = -currentIndex * 50; // Each slide takes 50% width (for 2 stories at a time)
+        sliders.style.transform = `translateX(${offset}%)`;
+        };
+
+        next.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % Math.ceil(slides.length / 2); // Show 2 slides at a time
+        updateCarousel();
+        });
+
+        prev.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + Math.ceil(slides.length / 2)) % Math.ceil(slides.length / 2);
+        updateCarousel();
+        });
+
+        window.addEventListener("scroll", function () {
+        var header = document.getElementById("header");
+        if (window.scrollY > 100) { 
+            header.classList.add("sticky-header");
+        } else {
+            header.classList.remove("sticky-header");
+        }
+        });
+
+
+
+    </script>        
+</body>
+</html>
